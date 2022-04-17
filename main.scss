@@ -1,0 +1,339 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.test {
+    padding: 3rem;
+    color: #232323;
+
+    &__heading::before {
+        content: "hello";
+        background-color: aqua;
+    }
+
+    &__heading::after {
+        content: "bye";
+        background-color: aqua;
+    }
+
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    color: #ffffff;
+    padding: 1rem;
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right,
+            rgb(73, 24, 118),
+            rgb(95, 71, 95));
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    overflow: hidden;
+
+    &__box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+
+        &__heading {
+            font-size: 3rem;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            letter-spacing: .5rem;
+
+            animation-name: moveInLeft;
+            animation-duration: 1s;
+            animation-timing-function: ease-out;
+
+            // &::before {
+            //     content: "hello";
+            //     background-color: red;
+            //     display: block;
+            // }
+
+            // &::after {
+            //     content: "bye";
+            //     background-color: red;
+            //     display: block;
+            // }
+        }
+    }
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: skewY(50deg);
+    }
+
+    100% {
+        transform: skewY(0deg);
+        opacity: 1;
+    }
+}
+
+.btn {
+
+    &:link,
+    &:visited {
+        text-decoration: none;
+        text-transform: uppercase;
+        display: inline-block;
+        color: black;
+        background-color: plum;
+        padding: 1rem 2rem;
+        border-radius: 100px;
+        position: relative;
+        font-weight: 600;
+        transition: all .2s;
+    }
+
+    &::before {
+        content: "";
+        background-color: black;
+        border-radius: 100px;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        // z-index: -1;
+        transition: all 1s;
+        z-index: -1;
+    }
+
+    &:hover {
+        transform: translateY(-1rem);
+        box-shadow: 0 1rem 2rem rgba(black, .4);
+    }
+
+    &:hover::before {
+        transform: scaleX(20) scaleY(20);
+        opacity: 0;
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 10rem 0;
+}
+
+.card-1 {
+    position: relative;
+    margin: 1rem;
+    background-color: #232323;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 1.25rem;
+        left: 1.25rem;
+        bottom: 1.25rem;
+        right: 1.25rem;
+    }
+
+    &::before {
+        // background-color: palevioletred;
+        opacity: .3;
+        transform: scale(0, 1);
+        transition: transform .3s;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        z-index: 1;
+    }
+
+    &::after {
+        // background-color: palegreen;
+        opacity: .3;
+        transform: scale(1, 0);
+        transition: transform .3s;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+    }
+
+    &:hover::before {
+        transform: scale(1.05, 1);
+        opacity: 1;
+    }
+
+    &:hover::after {
+        transform: scale(1, 1.05);
+        opacity: 1;
+    }
+
+    &__img {
+        max-width: 100%;
+        display: block;
+        transition: opacity .3s;
+    }
+
+    &__text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        text-align: center;
+        opacity: 0;
+        transition: opacity .3s;
+    }
+
+    &__title {
+        font-size: 2.5rem;
+        letter-spacing: 1rem;
+        font-weight: 400;
+    }
+
+    &__body {
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+
+    &:hover &__text {
+        opacity: 1;
+    }
+
+    &:hover &__img {
+        opacity: .5;
+    }
+}
+
+.card-2 {
+    position: relative;
+    margin: 1rem;
+    background-color: #232323;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 1.25rem;
+        left: 1.25rem;
+        bottom: 1.25rem;
+        right: 1.25rem;
+    }
+
+    &::before {
+        // background-color: palevioletred;
+        transition: all 3s;
+        border: 1px solid white;
+        z-index: 1;
+    }
+
+    &:hover::before {
+        left: 48%;
+        right: 48%;
+        transform: rotate(45deg);
+        z-index: 1;
+        background-color: #ffffff;
+        opacity: .3;
+    }
+
+    &::after {
+        // background-color: palegreen;
+        transition: all 3s;
+        border: 1px solid white;
+    }
+
+    &:hover::after {
+        top: 48%;
+        bottom: 48%;
+        transform: rotate(45deg);
+        background-color: #ffffff;
+        opacity: .3;
+    }
+
+    &__img {
+        max-width: 100%;
+        display: block;
+        transition: all .3s;
+        transform: scale(1.25);
+    }
+
+    &__text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        text-align: center;
+        opacity: 0;
+        transition: all .3s;
+    }
+
+    &__title {
+        font-size: 2.5rem;
+        letter-spacing: 1rem;
+        font-weight: 400;
+    }
+
+    &__body {
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+
+    &:hover &__text {
+        opacity: 1;
+    }
+
+    &:hover &__img {
+        opacity: .5;
+        transform: scale(1);
+    }
+}
+
+.card-3 {
+    position: relative;
+    margin: 1rem;
+    height: 400px;
+    width: 400px;
+    background-color: #232323;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 1.25rem;
+        left: 1.25rem;
+        bottom: 1.25rem;
+        right: 1.25rem;
+        background-color: #232323;
+        transform: translateY(370px);
+        transition: all .5s;
+        border-top: 2px solid white;
+        opacity: 1;
+    }
+
+    &:hover::after {
+        transform: translateY(0);
+    }
+
+    &__text {
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        right: 5%;
+        bottom: 5%;
+        // transform: translate(-50%, -50%);
+        color: #ffffff;
+        opacity: 1;
+        transition: all .3s;
+    }
+
+    &__body {
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+}
